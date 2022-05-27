@@ -1,26 +1,25 @@
-// Write function below
-const subLength = (str, char) => {
-    let strChars = str.toLowerCase().split(""),
-        found = [],
-        length = 0;
-    
-    strChars.forEach((val, index) => {
-        if (val === char) {
-            found.push(index);
-        }
-       
-    });
+let humanScore = 0;
+let computerScore = 0;
+let currentRoundNumber = 1;
 
-    if (found.length != 2) {
-        return length;
-    }
+// Write your code below:
 
-   return str.slice(found[0], found[1]).length + 1;
+let generateTarget = () => {
+  return Math.floor(Math.random() * 10);
 }
 
-console.log(subLength('Saturday', 'a')); // returns 6
-subLength('summer', 'm'); // returns 2
-subLength('digitize', 'i'); // returns 0
-subLength('cheesecake', 'k'); // returns 0
+let compareGuesses = (human, computer, target) => {
+  return Math.abs(target - computer) >= Math.abs(target - human);
+}
 
-console.log(subLength());
+let updateScore = (winner) => {
+  if (winner === 'human') {
+    humanScore++;
+  } else if (winner === 'computer') {
+    computerScore++;
+  } 
+}
+
+let advanceRound = () => {
+  currentRoundNumber++;
+}
